@@ -72,8 +72,13 @@ export function DashboardPage() {
   }, [projectId]);
 
   const { executedPlans, plannedPlans } = useMemo(() => {
-    const filtered = searchTerm.trim() 
-      ? metrics.filter(m => m.product_name.toLowerCase().includes(searchTerm.toLowerCase()))
+    const q = searchTerm.trim().toLowerCase();
+    const filtered = q
+      ? metrics.filter(m => (
+          (m.product_name || '').toLowerCase().includes(q) ||
+          (m.module_name || '').toLowerCase().includes(q) ||
+          (m.method || '').toLowerCase().includes(q)
+        ))
       : metrics;
     
     return {
