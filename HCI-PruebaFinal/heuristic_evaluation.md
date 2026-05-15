@@ -2,9 +2,9 @@
 
 | ID | Pantalla | Descripción del Problema | Heurística Violada | Severidad |
 |---|---|---|---|---|
-| 1 | Login | El sistema no valida el formato del correo mientras se escribe; solo advierte al enviar el formulario (backend). | #5 Prevención de errores | Moderado |
-| 2 | Login | El modal de "¡Revisa tu Email!" bloquea toda la pantalla y no puede cerrarse haciendo click fuera ni con la tecla ESC. | #3 Control y libertad del usuario | Leve |
-| 3 | Login | Los labels de Email y Contraseña usan un tamaño de texto diminuto (10px) en mayúsculas y color gris claro, provocando baja legibilidad. | #4 Consistencia y estándares | Moderado |
+| 1 | Login | El mensaje de error ("Invalid login credentials") está en inglés y es genérico. | #2 Relación entre sistema y mundo real | Moderado |
+| 2 | Login | No existe un enlace para "Recuperar contraseña", dejando al usuario bloqueado si la olvida. | #9 Ayudar a recuperarse de errores | Crítico |
+| 3 | Login | El campo de contraseña no tiene un botón ("ojo") para mostrar/ocultar los caracteres escritos. | #3 Control y libertad del usuario | Moderado |
 | 4 | General / Navegación | Al navegar por proyectos y planes, no existen "Breadcrumbs" (Migas de pan). El usuario pierde fácilmente la ubicación actual. | #3 Control y libertad / #6 Reconocimiento | Crítico |
 | 5 | Test Plan Form | La creación de una prueba involucra múltiples campos sin un "Stepper" (Indicador de Progreso), perdiendo noción de cuánto falta. | #1 Visibilidad del estado del sistema | Crítico |
 | 6 | Dashboard | El botón y diálogo de "Eliminar Plan" no pide verificación tipográfica de seguridad (ej. "Escriba BORRAR"), lo que genera borrados accidentales irrecuperables. | #5 Prevención de errores | Crítico |

@@ -10,7 +10,9 @@
 2. **Restricción de BDD:**
     * **Prompt del usuario:** "Te tengo una nueva indicacion, NO DEBES TOCAR LA BDD, esta parte debe de permaner lo mas pura posible, y ademas te tengo una pregunta, estas tomando nota de todos los prompts que te estoy enviando?"
     * **Resultado:** Confirmación de no alterar backend/BDD y registro automático de la evidencia IA.
-3. **Evaluación Heurística:**
+3. **Evaluación Heurística (Login y Dashboard):**
+    * **Prompt del usuario:** "empecemos con la primera opcion si, ademas, note que a la pantalla de login le hace faltas cosas super basicas, como el poder recuperar...".
+    * **Resultado:** Se integraron los problemas detectados en la imagen provista y se generaron los wireframes de la Fase 3.
     * Prompt:
     * Resultado: 
 
