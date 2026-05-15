@@ -136,7 +136,7 @@ export function LoginPage() {
           <form onSubmit={handleAuth} className="space-y-6 relative z-10">
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-1.5">
+                <label className="text-sm font-black text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-1.5">
                    <Mail size={12} /> Email de Investigador
                 </label>
                 <Input 
@@ -151,7 +151,7 @@ export function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-1.5">
+                <label className="text-sm font-black text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-1.5">
                    <Lock size={12} /> Contraseña
                 </label>
                 <div className="relative">
