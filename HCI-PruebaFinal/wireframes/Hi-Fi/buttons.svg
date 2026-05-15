@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="360" viewBox="0 0 880 360" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"><defs>
+  <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.06"/>
+    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0F172A" flood-opacity="0.04"/>
+  </filter>
+  <filter id="btnShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#2563EB" flood-opacity="0.30"/>
+  </filter>
+  <filter id="modalShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="20" stdDeviation="40" flood-color="#0F172A" flood-opacity="0.25"/>
+  </filter>
+  <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#3B82F6"/>
+    <stop offset="100%" stop-color="#1D4ED8"/>
+  </linearGradient>
+  <linearGradient id="loginBg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#EFF6FF"/>
+    <stop offset="100%" stop-color="#DBEAFE"/>
+  </linearGradient>
+  <linearGradient id="heroOrb" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.5"/>
+    <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.0"/>
+  </linearGradient>
+  <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#2563EB" fill-opacity="0.10"/>
+  </pattern>
+</defs>
+<rect x="0" y="0" width="880" height="360" rx="0" fill="#fff"/>
+<text x="24" y="30" font-size="14" fill="#0F172A" font-weight="700" text-anchor="start">Buttons / States</text>
+<text x="24" y="70" font-size="11" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1">Primary</text>
+<rect x="24" y="80" width="160" height="44" rx="10" fill="#2563EB" filter="url(#btnShadow)"/>
+<text x="104" y="108" font-size="13.5" fill="#fff" font-weight="700" text-anchor="middle">Guardar</text>
+<rect x="200" y="80" width="160" height="44" rx="10" fill="#1D4ED8"/>
+<text x="280" y="108" font-size="13.5" fill="#fff" font-weight="700" text-anchor="middle">Hover</text>
+<rect x="376" y="80" width="160" height="44" rx="10" fill="#CBD5E1"/>
+<text x="456" y="108" font-size="13.5" fill="#fff" font-weight="700" text-anchor="middle">Disabled</text>
+<rect x="552" y="80" width="160" height="44" rx="10" fill="#2563EB"/>
+<circle cx="580" cy="102" r="7" fill="none" stroke="#93C5FD" stroke-width="2.5"/>
+<path d="M 580 95 a 7 7 0 0 1 7 7" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<text x="642" y="108" font-size="13" fill="#fff" font-weight="700" text-anchor="middle">Cargando…</text>
+<text x="24" y="160" font-size="11" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1">Secondary</text>
+<rect x="24" y="170" width="160" height="44" rx="10" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+<text x="104" y="198" font-size="13.5" fill="#0F172A" font-weight="600" text-anchor="middle">Cancelar</text>
+<rect x="200" y="170" width="160" height="44" rx="10" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+<text x="280" y="198" font-size="13.5" fill="#0F172A" font-weight="600" text-anchor="middle">Hover</text>
+<text x="24" y="250" font-size="11" fill="#64748B" font-weight="700" text-anchor="start" letter-spacing="1">Destructive</text>
+<rect x="24" y="260" width="200" height="44" rx="10" fill="#DC2626"/>
+<g transform="translate(36,270)" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></g>
+<text x="140" y="288" font-size="13.5" fill="#fff" font-weight="700" text-anchor="middle">Eliminar</text>
+<rect x="240" y="260" width="200" height="44" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+<g transform="translate(252,270)" stroke="#DC2626" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></g>
+<text x="356" y="288" font-size="13.5" fill="#DC2626" font-weight="700" text-anchor="middle">Quitar</text>
+<rect x="456" y="260" width="44" height="44" rx="10" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+<g transform="translate(466,270)" stroke="#2563EB" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></g>
+<rect x="508" y="260" width="44" height="44" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1"/>
+<g transform="translate(518,270)" stroke="#DC2626" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></g>
+<rect x="560" y="260" width="44" height="44" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+<g transform="translate(570,270)" stroke="#2563EB" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g>
+</svg>
