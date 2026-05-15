@@ -31,6 +31,7 @@ export function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [deleteConfirmInput, setDeleteConfirmInput] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [successToast, setSuccessToast] = useState<string | null>(null);
@@ -466,11 +467,16 @@ export function DashboardPage() {
 
   const handleDelete = async () => {
     if (!deleteConfirm) return;
+    if (deleteConfirmInput.trim() !== 'BORRAR') {
+      alert('Para confirmar la eliminación escribe BORRAR en el campo solicitado.');
+      return;
+    }
     setIsDeleting(true);
     try {
       const repo = new SupabaseTestPlanRepository();
       await repo.delete(deleteConfirm);
       setDeleteConfirm(null);
+      setDeleteConfirmInput("");
       await fetchMetrics();
     } catch (err) {
       console.error("Error al eliminar plan", err);
@@ -526,14 +532,24 @@ export function DashboardPage() {
                 <AlertTriangle size={32} aria-hidden="true" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">¿Eliminar este plan?</h3>
-              <p className="text-sm text-slate-700 mb-8 leading-relaxed font-medium">
+              <p className="text-sm text-slate-700 mb-4 leading-relaxed font-medium">
                 Esta acción no se puede deshacer de forma sencilla desde el panel.
               </p>
+              <p className="text-sm text-slate-600 mb-6">Escribe <strong>BORRAR</strong> para confirmar la eliminación.</p>
+              <input
+                type="text"
+                value={deleteConfirmInput}
+                onChange={(e) => setDeleteConfirmInput(e.target.value)}
+                className="w-full mb-6 px-4 py-3 border border-slate-200 rounded-xl text-sm"
+                placeholder="Escribe BORRAR para confirmar"
+                aria-label="Confirmación de borrado"
+                disabled={isDeleting}
+              />
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="outline" onClick={() => setDeleteConfirm(null)} disabled={isDeleting} className="flex-1 rounded-xl py-6 font-semibold border-slate-300 text-slate-700">
+                <Button variant="outline" onClick={() => { setDeleteConfirm(null); setDeleteConfirmInput(''); }} disabled={isDeleting} className="flex-1 rounded-xl py-6 font-semibold border-slate-300 text-slate-700">
                   Cancelar
                 </Button>
-                <Button onClick={handleDelete} disabled={isDeleting} className="flex-1 rounded-xl py-6 bg-red-600 hover:bg-red-700 text-white font-semibold transition-colors">
+                <Button onClick={handleDelete} disabled={isDeleting || deleteConfirmInput.trim() !== 'BORRAR'} className="flex-1 rounded-xl py-6 bg-red-600 hover:bg-red-700 text-white font-semibold transition-colors">
                   {isDeleting ? <Loader2 className="animate-spin" size={18} /> : <Trash2 size={18} aria-hidden="true" />}
                   Sí, eliminar
                 </Button>
