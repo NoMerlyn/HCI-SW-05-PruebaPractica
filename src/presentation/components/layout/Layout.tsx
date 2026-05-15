@@ -160,15 +160,56 @@ navigate('/dashboard/plan', { replace: true });
       <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm">
         <div className="max-w-[1200px] xl:max-w-[1600px] mx-auto px-4 md:px-6">
           <div className="flex h-16 items-center justify-between">
-            {/* Brand */}
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold shadow-sm">U</div>
-              <span className="text-xl font-bold tracking-tight text-slate-900 hidden sm:inline-block">
-                Usability<span className="text-primary">Dashboard</span>
-              </span>
+            {/* Brand and Breadcrumbs */}
+            <div className="flex items-center gap-6 flex-1">
+              <div className="flex items-center gap-2">
+                <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold shadow-sm">U</div>
+                <span className="text-xl font-bold tracking-tight text-slate-900 hidden sm:inline-block">
+                  Usability<span className="text-primary">Dashboard</span>
+                </span>
+              </div>
+
+              {/* 🍞 BREADCRUMBS UX IMPROVEMENT 🍞 */}
+              <nav aria-label="Ruta de navegación" className="hidden lg:flex items-center text-sm font-medium text-slate-500">
+                <ol className="flex items-center gap-2">
+                  <li>
+                    <NavLink to="/dashboard" className="hover:text-primary transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-100">
+                      <Building2 size={16} /> Inicio
+                    </NavLink>
+                  </li>
+                  {selectedOrg && (
+                    <>
+                      <li className="text-slate-300">/</li>
+                      <li>
+                        <NavLink to={`/dashboard/organizations/${selectedOrg.id}`} className="hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-slate-100 max-w-[150px] truncate block">
+                          {selectedOrg.name}
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+                  {isInProjectContext && currentProjectId && orgProjects.find(p => p.id === currentProjectId) && (
+                    <>
+                      <li className="text-slate-300">/</li>
+                      <li>
+                         <NavLink to={`/dashboard/project/${currentProjectId}`} className="text-slate-900 font-bold hover:text-primary transition-colors px-2 py-1 rounded-md hover:bg-slate-100 max-w-[200px] truncate block">
+                            {orgProjects.find(p => p.id === currentProjectId)?.name}
+                         </NavLink>
+                      </li>
+                    </>
+                  )}
+                  {isWizardPage && (
+                    <>
+                      <li className="text-slate-300">/</li>
+                      <li className="text-primary font-bold px-2 py-1 bg-primary/5 rounded-md flex items-center gap-2">
+                        <Edit3 size={14} /> Prueba en Curso
+                      </li>
+                    </>
+                  )}
+                </ol>
+              </nav>
             </div>
 
-            {/* Breadcrumb: Org + Project selector OR simple Organizations link */}
+            {/* Quick Selectors & User Menu */}
             <div className="flex items-center gap-3">
               {isInProjectContext && selectedOrg ? (
                 <>
