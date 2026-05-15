@@ -9,7 +9,8 @@ import {
   Loader2, 
   LayoutDashboard,
   Gem,
-  AlertCircle
+  AlertCircle,
+  Eye, EyeOff
 } from "lucide-react";
 
 export function LoginPage() {
@@ -19,6 +20,10 @@ export function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [forgotOpen, setForgotOpen] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [forgotMessage, setForgotMessage] = useState<string | null>(null);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +44,15 @@ export function LoginPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleForgotSend = () => {
+    // UI-only: Do not call backend (respect BDD restriction). Show friendly message.
+    setForgotMessage(
+      `Si existe una cuenta asociada a ${forgotEmail}, te enviaremos un enlace para restablecer la contraseña.`
+    );
+    setForgotEmail("");
+    setForgotOpen(false);
   };
 
   return (
@@ -66,6 +80,29 @@ export function LoginPage() {
               >
                 ENTENDIDO, VOLVER AL LOGIN
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Recuperar Contraseña (UI-only) */}
+      {forgotOpen && (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/60 p-4">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+            <h3 className="text-lg font-bold text-slate-900">Recuperar contraseña</h3>
+            <p className="text-sm text-slate-600 mt-2">Ingresa tu correo y te enviaremos instrucciones para restablecer la contraseña.</p>
+            <div className="mt-4">
+              <Input
+                type="email"
+                value={forgotEmail}
+                onChange={(e) => setForgotEmail(e.target.value)}
+                placeholder="investigador@dominio.com"
+                className="h-12 rounded-xl bg-slate-50 border-slate-200"
+              />
+            </div>
+            <div className="mt-4 flex gap-3">
+              <Button onClick={handleForgotSend} className="bg-primary">Enviar</Button>
+              <Button onClick={() => setForgotOpen(false)} className="bg-white border">Cancelar</Button>
             </div>
           </div>
         </div>
@@ -109,6 +146,7 @@ export function LoginPage() {
                   placeholder="investigador@dominio.com"
                   className="h-12 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all font-medium"
                   required
+                  disabled={loading}
                 />
               </div>
 
@@ -116,14 +154,25 @@ export function LoginPage() {
                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 flex items-center gap-1.5">
                    <Lock size={12} /> Contraseña
                 </label>
-                <Input 
-                  type="password" 
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="h-12 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all font-medium"
-                  required
-                />
+                <div className="relative">
+                  <Input 
+                    type={showPassword ? "text" : "password"} 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className="h-12 rounded-xl bg-slate-50 border-slate-200 focus:bg-white transition-all font-medium pr-12"
+                    required
+                    disabled={loading}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(s => !s)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 p-1 rounded-md hover:bg-slate-100"
+                    aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -131,6 +180,13 @@ export function LoginPage() {
               <div className="p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-700 animate-in slide-in-from-top-2">
                 <AlertCircle size={20} className="shrink-0" />
                 <p className="text-xs font-bold leading-tight">{error}</p>
+              </div>
+            )}
+
+            {forgotMessage && (
+              <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center gap-3 text-emerald-700 animate-in slide-in-from-top-2">
+                <ShieldCheck size={20} className="shrink-0" />
+                <p className="text-xs font-bold leading-tight">{forgotMessage}</p>
               </div>
             )}
 
@@ -146,13 +202,25 @@ export function LoginPage() {
             </Button>
 
             <div className="pt-4 border-t border-slate-100 text-center">
-              <button 
-                type="button"
-                onClick={() => setMode(mode === "login" ? "signup" : "login")}
-                className="text-xs font-bold text-slate-400 hover:text-primary transition-colors uppercase tracking-widest"
-              >
-                {mode === "login" ? "¿No tienes cuenta? Regístrate" : "¿Ya tienes cuenta? Ingresa"}
-              </button>
+              <div className="flex items-center justify-between mt-4">
+                <button 
+                  type="button"
+                  onClick={() => setMode(mode === "login" ? "signup" : "login")}
+                  className="text-xs font-bold text-slate-400 hover:text-primary transition-colors uppercase tracking-widest"
+                >
+                  {mode === "login" ? "¿No tienes cuenta? Regístrate" : "¿Ya tienes cuenta? Ingresa"}
+                </button>
+
+                {mode === "login" && (
+                  <button
+                    type="button"
+                    onClick={() => setForgotOpen(true)}
+                    className="text-sm text-primary font-semibold hover:underline"
+                  >
+                    ¿Olvidaste tu contraseña?
+                  </button>
+                )}
+              </div>
             </div>
           </form>
         </div>
