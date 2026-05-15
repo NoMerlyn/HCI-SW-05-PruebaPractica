@@ -100,9 +100,9 @@ export function LoginPage() {
                 className="h-12 rounded-xl bg-slate-50 border-slate-200"
               />
             </div>
-            <div className="mt-4 flex gap-3">
+              <div className="mt-4 flex gap-3">
               <Button onClick={handleForgotSend} className="bg-primary">Enviar</Button>
-              <Button onClick={() => setForgotOpen(false)} className="bg-white border">Cancelar</Button>
+              <Button onClick={() => setForgotOpen(false)} className="bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">Cancelar</Button>
             </div>
           </div>
         </div>
