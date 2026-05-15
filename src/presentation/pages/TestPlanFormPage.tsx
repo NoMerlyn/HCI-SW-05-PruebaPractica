@@ -116,6 +116,52 @@ export function TestPlanFormPage() {
       ) : (
         <div className="flex flex-col min-h-full">
           <header className="px-6 py-8 border-b border-slate-200 bg-slate-50">
+            {/* Stepper: indicador de progreso del wizard (UI-only) */}
+            <div className="mb-6">
+              <nav aria-label="Progreso del formulario" className="hidden sm:flex items-center gap-4">
+                <ol className="flex items-center gap-4 w-full">
+                  <li className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
+                      <div>
+                        <div className="text-xs font-bold text-slate-700">Contexto</div>
+                        <div className="text-[10px] text-slate-400">Información general</div>
+                      </div>
+                    </div>
+                    <div className="h-1 bg-primary/30 mt-3 rounded-full w-full" />
+                  </li>
+                  <li className="flex-1 opacity-60">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold">2</div>
+                      <div>
+                        <div className="text-xs font-bold text-slate-600">Tareas</div>
+                        <div className="text-[10px] text-slate-400">Escenarios y métricas</div>
+                      </div>
+                    </div>
+                    <div className="h-1 bg-slate-100 mt-3 rounded-full w-full" />
+                  </li>
+                  <li className="flex-1 opacity-60">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold">3</div>
+                      <div>
+                        <div className="text-xs font-bold text-slate-600">Roles</div>
+                        <div className="text-[10px] text-slate-400">Logística</div>
+                      </div>
+                    </div>
+                    <div className="h-1 bg-slate-100 mt-3 rounded-full w-full" />
+                  </li>
+                  <li className="flex-1 opacity-60">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold">4</div>
+                      <div>
+                        <div className="text-xs font-bold text-slate-600">Notas</div>
+                        <div className="text-[10px] text-slate-400">Moderador</div>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+              </nav>
+            </div>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
